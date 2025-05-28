@@ -1,0 +1,203 @@
+/* General body styling */
+body {
+    font-family: Arial, Helvetica, sans-serif; /* Common sans-serif font */
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6; /* Improved readability */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #333;
+    margin-top: 1em; /* Consistent top margin */
+    margin-bottom: 0.5em;
+}
+
+/* Links styling */
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+/* Navigation/Header - Placeholder for future, applied to general links for now */
+/* For home.html specific link styling if needed */
+.nav-links a {
+    margin-right: 15px;
+}
+
+
+/* Buttons styling */
+button, input[type="submit"] { /* Apply to buttons and submit inputs */
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em; /* Consistent font size */
+    transition: background-color 0.2s ease-in-out; /* Smooth hover transition */
+}
+button:hover, input[type="submit"]:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+button:disabled, input[type="submit"]:disabled {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+}
+
+/* Forms styling (e.g., Settings Page) */
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 8px; /* Increased margin slightly */
+    font-weight: bold;
+}
+
+input[type="password"],
+input[type="text"],
+input[type="email"], /* Added for potential future use */
+select { /* Apply to select elements as well */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box; /* Important for width calculation */
+    margin-bottom: 15px; /* Increased margin */
+    font-size: 1em;
+}
+
+/* Flashed messages styling */
+.flashes {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0; /* Add margin to separate from other content */
+}
+.flashes li {
+    padding: 0.75em 1.25em; /* More horizontal padding */
+    margin-bottom: 0.75em; /* Increased margin */
+    border-radius: 4px;
+    border: 1px solid transparent; /* Base border */
+}
+.flashes .success {
+    background-color: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+}
+.flashes .danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+}
+.flashes .warning {
+    background-color: #fff3cd;
+    color: #856404;
+    border-color: #ffeeba;
+}
+
+/* Camera Grid Styling */
+.camera-grid {
+    display: grid;
+    gap: 20px; /* Increased gap */
+    margin-top: 20px;
+}
+
+.camera-item {
+    border: 1px solid #ddd; /* Lighter border */
+    padding: 15px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Softer shadow */
+    transition: transform 0.2s ease-in-out; /* Add subtle hover effect */
+}
+.camera-item:hover {
+    transform: translateY(-3px); /* Slight lift on hover */
+}
+
+.camera-item h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.camera-item video {
+    width: 100%;
+    max-width: 100%; /* Ensure it doesn't overflow */
+    aspect-ratio: 16 / 9;
+    background-color: #000;
+    border-radius: 4px;
+    display: block; /* Remove extra space below video */
+}
+
+.camera-item .stream-status {
+    font-size: 0.9em;
+    margin-top: 10px; /* Increased margin */
+    font-weight: 500;
+}
+
+/* Grid layouts based on selection */
+.grid-cols-1 { grid-template-columns: repeat(1, 1fr); }
+.grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+/* Pagination controls styling */
+#pagination-controls {
+    margin-top: 25px; /* Increased margin */
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#pagination-controls button { /* Re-using general button styles */
+    margin: 0 8px; /* Increased margin */
+}
+
+#pagination-controls span {
+    margin: 0 15px; /* Increased margin */
+    vertical-align: middle;
+    font-weight: 500;
+}
+
+/* Container for general content for consistent padding */
+.container {
+    padding: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) { /* Larger tablets and small desktops */
+    .grid-cols-4 { grid-template-columns: repeat(3, 1fr); } /* 4-col to 3-col */
+}
+
+@media (max-width: 992px) { /* Tablets */
+    .grid-cols-3, .grid-cols-4 { grid-template-columns: repeat(2, 1fr); } /* 3/4-col to 2-col */
+}
+
+@media (max-width: 768px) { /* Smaller tablets / Landscape phones */
+    .camera-grid {
+        grid-template-columns: 1fr; /* Stack to single column */
+    }
+    /* Adjust other elements as needed for smaller screens */
+    h1 { font-size: 1.8em; }
+    body { font-size: 0.95em; }
+    button, input[type="submit"], input[type="password"], input[type="text"], select {
+        font-size: 0.95em; /* Slightly smaller font on smaller screens */
+    }
+}
+
+@media (max-width: 576px) { /* Phones */
+    .container { padding: 15px; }
+    h1 { font-size: 1.5em; }
+    button, input[type="submit"] { padding: 8px 12px; }
+    input[type="password"], input[type="text"], select { padding: 8px; }
+}

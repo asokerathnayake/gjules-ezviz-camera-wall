@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ezviz Viewer</title>
+</head>
+<body>
+    <h1>Welcome to Ezviz Viewer</h1>
+    {% if session.user %}
+        <p>Hello, {{ session.user.name }} ({{ session.user.email }})!</p>
+        <p><a href="{{ url_for('logout') }}">Logout</a></p>
+        <p><a href="{{ url_for('settings_page') }}">Go to Settings</a></p> 
+        <p><a href="{{ url_for('cameras') }}">View Cameras</a></p>
+    {% else %}
+        <p><a href="{{ url_for('login') }}">Login</a></p>
+    {% endif %}
+</body>
+</html>

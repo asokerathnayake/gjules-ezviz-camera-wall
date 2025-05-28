@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cameras - Ezviz Viewer</title>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> <!-- Basic CSS -->
+</head>
+<body>
+    <h1>Camera View</h1>
+    {% if session.user %}
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <ul class=flashes>
+            {% for category, message in messages %}
+              <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+
+        <div>
+            <label for="view-select">Cameras per page:</label>
+            <select id="view-select">
+                <option value="4">4</option>
+                <option value="9" selected>9</option>
+                <option value="16">16</option>
+            </select>
+        </div>
+        <div id="camera-grid" class="camera-grid grid-cols-3"> <!-- Default to 3 columns -->
+            <!-- Camera players will be injected here by JavaScript -->
+        </div>
+        <div id="pagination-controls">
+            <!-- Pagination buttons will be injected here -->
+        </div>
+        <p><a href="{{ url_for('index') }}">Back to Home</a></p>
+        <!-- Pass camera data to JavaScript -->
+        <script>
+            const camerasData = {{ cameras_list|tojson|safe }};
+            const getStreamUrlEndpoint = "{{ url_for('get_stream_url', device_id='DEVICE_ID_PLACEHOLDER') }}";
+        </script>
+        <script src="{{ url_for('static', filename='js/camera_view.js') }}"></script>
+    {% else %}
+        <p>Please <a href="{{ url_for('login') }}">login</a> to view cameras.</p>
+    {% endif %}
+</body>
+</html>
